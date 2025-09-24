@@ -2,93 +2,97 @@ AI Mood-Based Playlist Generator
 
 Project Description
 
-This project is a mood-based playlist generator that uses artificial intelligence to create personalized music playlists. Users can simply type in a mood or vibe, and the application leverages the Gemini AI to interpret the prompt and the Spotify API to curate a custom playlist.
-
-The application aims to provide a seamless and intuitive experience, allowing users to discover new music that perfectly matches their current state of mind.
+This project is a back-end application for a mood-based playlist generator. It is designed to interpret a user's mood using Gemini AI and then create a personalized music playlist from Spotify and Apple Music APIs. The application supports user authentication and persistent storage of playlist history using MongoDB and Clerk.
 
 ✨ Features
 
-    Natural Language Processing: Input your mood using simple, everyday language.
+    User Authentication: Secure user authentication is handled by Clerk.
 
-    Gemini AI Integration: Utilizes AI to understand and interpret your mood description.
+Mood-based Playlist Generation: Accepts a mood description from the user to generate a playlist. (Note: The core logic for API calls to Gemini, Spotify, and Apple Music is a placeholder in the provided code).
 
-    Spotify API Connectivity: Generates and displays a playlist directly from Spotify's vast music library.
+Playlist History: Allows authenticated users to view their past generated playlists.
 
-    Interactive UI: View track details, album art, and easily play or open the playlist in Spotify.
+Shareable Playlists: Publicly accessible routes to share individual playlists with anyone, regardless of their login status.
 
-    Responsive Design: Optimized for a smooth experience on both desktop and mobile devices.
+Database Integration: Utilizes MongoDB to store and manage user-specific data, including playlist history.
 
-🚀 Demo
-
-    Live Demo: [Link to your live demo, e.g., on Vercel or Netlify]
-
-    Video Walkthrough: [Link to a short video demo, e.g., on YouTube or Loom]
+API Management: Handles API keys and credentials securely on the server-side.
 
 🛠️ Technology Stack
 
-    Frontend:
+    Backend: Node.js & Express
 
-        React.js
+    Authentication: Clerk
 
-        [UI Library, e.g., Tailwind CSS, Material-UI]
+    Database: MongoDB
 
-    Backend:
+    APIs: Gemini API, Spotify API, Apple Music API (planned integration) 
 
-        Node.js & Express
-
-    APIs:
-
-        Google Gemini API
-
-        Spotify API
+    Development Tools: nodemon
 
 📋 Setup Instructions
 
 Prerequisites
 
-    Node.js (v14 or higher)
+    Node.js
 
-    [yarn or npm]
+    npm or yarn
 
-API Keys
+    A MongoDB Atlas account 
 
-    Google Gemini API: Obtain your API key from the Google AI Studio.
+API keys from Google Gemini, Spotify, and Clerk 
 
-    Spotify API:
+API Keys and Environment Variables
 
-        Go to the Spotify for Developers Dashboard.
+Create a .env file in the root directory and populate it with your credentials:
+Ini, TOML
 
-        Create a new application to get your Client ID and Client Secret.
-
-.env File
-
-Create a .env file in the root of the project with the following variables:
-
-REACT_APP_GEMINI_API_KEY=[Your Gemini API Key]
-REACT_APP_SPOTIFY_CLIENT_ID=[Your Spotify Client ID]
-REACT_APP_SPOTIFY_CLIENT_SECRET=[Your Spotify Client Secret]
+PORT=8888
+CLIENT_ID=f85cd5c6bae44670b4075e84e7d4012e
+CLIENT_SECRET=6f3b6f21c0f5496db7764a46fcf197e2
+REDIRECT_URI=http://localhost:8888/callback
+GEMINI_API_KEY=AIzaSyD-mSI9ZUpMsymNCM9cf3zVh2bCNlRvWR4
+FRONTEND_URI=http://localhost:3000
+MONGO_URI=mongodb+srv://gousemoideen:Gouse12345!@cluster0.0bnjmyc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 Installation
 
     Clone the repository:
     Bash
 
-git clone [your-repo-link]
-cd [your-project-folder]
+git clone <repository_url>
+cd <project_directory>
 
-Install dependencies:
+Install the dependencies listed in package.json:
 Bash
 
-# For both frontend and backend
 npm install
 # or
 yarn install
 
-Run the application:
+The main dependency is nodemon, used for development.
+
+Start the server:
 Bash
 
     npm start
     # or
     yarn start
 
-The application will be available at http://localhost:3000.
+The server will start on the port specified in the 
+
+.env file, which is 8888 by default.
+
+🧪 Routes
+
+    POST /generate
+
+        Description: Generates a new playlist based on a mood. This is a protected route that requires a logged-in user.
+
+    GET /history
+
+        Description: Retrieves the playlist history for the authenticated user.
+
+    GET /playlist/:id
+
+        Description: Fetches a specific playlist by its ID. This is a public route.
