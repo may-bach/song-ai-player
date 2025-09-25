@@ -44,16 +44,6 @@ API keys from Google Gemini, Spotify, and Clerk
 
 API Keys and Environment Variables
 
-Create a .env file in the root directory and populate it with your credentials:
-Ini, TOML
-
-PORT=8888
-CLIENT_ID=f85cd5c6bae44670b4075e84e7d4012e
-CLIENT_SECRET=6f3b6f21c0f5496db7764a46fcf197e2
-REDIRECT_URI=http://localhost:8888/callback
-GEMINI_API_KEY=AIzaSyD-mSI9ZUpMsymNCM9cf3zVh2bCNlRvWR4
-FRONTEND_URI=http://localhost:3000
-MONGO_URI=mongodb+srv://gousemoideen:Gouse12345!@cluster0.0bnjmyc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 Installation
 
